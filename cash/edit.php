@@ -17,12 +17,12 @@ $query->bind_param("i", $status);
 $query->execute();
 $results = $query->get_result();
 
-require("../navbar.php");
+require("../header.php");
 
 ?>
 
 
-<section class="vh-100">
+<section class="vh-100 bg-primary">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -31,33 +31,34 @@ require("../navbar.php");
 
             <form action="/update?id=<?=$row['sid']?>" method="post">
             <h3 class="mb-5">Update <?=$row['cash_status']===1? "Income":"Expense";?></h3>
-            <div>
-            <label for="date">Income:</label>
-            <input type="date" id="date" name="date" value="<?=$row['createDate']?>" required>
+            <div class="text-start mb-4">
+            <label for="date">Income :</label>
+            <input type="date" id="date" name="date" value="<?=$row['createDate']?>" class="ms-1" required>
           </div>
             
             <div class="form-outline mb-4">
               <input type="number" name="amount" id="amount" value="<?=$row['amount']?>" class="form-control form-control-lg" />
               <label class="form-label" for="amount">Amount</label>
             </div>
-            <div class="dropdown">
+            <div class="text-start mb-4">
             <label for="cars">Choose a category:</label>
-            <select name="category" id="category">
+            <select name="category" id="category" class="ms-1">
             <?php while($category=mysqli_fetch_assoc($results)):?>
-    
            <option value="<?= $category['cid'] ?>" <?=$row['cid']===$category['cid']? "selected":"";?>><?=$category['category_name'] ?></option>
               <?php endwhile;?>
-</select>
+          </select>
 
-</div>
+          </div>
           
             <div class="form-outline mb-4">
               <input type="text" name="description" id="description" class="form-control form-control-lg" value="<?=$row['detail']?>" />
               <label class="form-label" for="description">Description</label>
             </div>
-
-            <button class="btn btn-primary btn-lg btn-block" type="submit"><?=$row['cash_status']===1? "Income":"Expense";?></button>
-            </form>
+            <div class="d-flex justify-content-between">
+            <a href="/" class="btn btn-warning btn-lg text-center text-decoration-none text-light">Cancel</a>
+            <button class="btn btn-primary btn-lg" type="submit"><?=$row['cash_status']===1? "Income":"Expense";?></button>
+            </div>  
+          </form>
  
           </div>
         </div>
@@ -65,3 +66,7 @@ require("../navbar.php");
     </div>
   </div>
 </section>
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"
+></script>

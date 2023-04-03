@@ -8,3 +8,9 @@ function login($user){
 $_SESSION['user']=$user;
 
 }
+
+function checkValidate($type,$field){
+  if(empty($field)){
+    echo  "$type  is required";
+  }
+}

@@ -11,7 +11,7 @@ $query=$conn->prepare("SELECT * FROM  category  where category_status=1");
 $query->execute();
 $result = $query->get_result();
 
-require("../navbar.php");
+require("../header.php");
 }
 
 ?>
@@ -49,8 +49,10 @@ require("../navbar.php");
               <input type="text" name="description" id="description" class="form-control form-control-lg" />
               <label class="form-label" for="description">Description</label>
             </div>
-
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Income</button>
+            <div class="d-flex justify-content-between">
+            <a href="/" class="btn btn-warning btn-lg text-center text-decoration-none text-light">Cancel</a>
+            <button class="btn btn-primary btn-lg" type="submit">Income</button>
+            </div>
             </form>
  
           </div>

@@ -8,16 +8,10 @@ $query=$conn->prepare("SELECT * FROM  category  where category_status=0");
 
 $query->execute();
 $result = $query->get_result();
-
-
 }
 require("../header.php");
-require("../navbar.php");
 ?>
-
-
-
-  <section class="vh-100">
+  <section class="vh-100 bg-danger">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -48,8 +42,11 @@ require("../navbar.php");
               <input type="text" name="description" id="description" class="form-control form-control-lg" />
               <label class="form-label" for="description">Description</label>
             </div>
-
-            <button class="btn btn-danger btn-lg btn-block" type="submit">Expense</button>
+            <div class="d-flex justify-content-between">
+            <a href="/" class="btn btn-warning btn-lg text-center text-decoration-none text-light">Cancel</a>
+            <button class="btn btn-danger btn-lg" type="submit">Expense</button>
+            </div>
+            
             </form>
             
           </div>

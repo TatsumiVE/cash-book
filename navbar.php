@@ -2,43 +2,47 @@
 require('header.php');
 ?>
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light p-3">
   <!-- Container wrapper -->
-  <div class="container-fluid">
+  <div class="container">
     <!-- Navbar brand -->
-    <a class="navbar-brand fs-1 ms-5" href="/">
-          Cash Note
-    </a>
-      <div class="d-flex align-items-center me-5">
-      <?php if($_SESSION['user']['email'] ?? false): ?>
-        <span class="navbar-text me-2">
-          <?= $_SESSION['user']['email'] ?>
-        </span>
-        <span class="navbar-text me-2">
-          <a href="/logout">Logout</a>
-        </span>
-        <?php else: ?>
-        <span class="navbar-text me-2">
-          <a href="/register">Register</a>
-        </span>
-        <span class="navbar-text me-2">
-          |
-        </span>
-        <span class="navbar-text me-2">
-          <a href="/login">Login</a>
-        </span>
+    <a href="/"><span class="navbar-brand mb-0 fs-3 fw-bolder text-primary">Cash Note</span></a>
+    <!-- Collapsible wrapper -->
+    <div class="d-flex align-items-center justify-content-end">
+
+
+      <div class="d-flex align-items-center pe-4">
+        <?php if ($_SESSION['user']['email'] ?? false) : ?>
+          <p style="margin: 0 15px; "><?= $_SESSION['user']['name'] ?></p>
+          <div class="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-user fa-lg"></i>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a class="dropdown-item" href="/" disabled><?= $_SESSION['user']['email'] ?></a>
+              </li>
+             
+              <li>
+                <a class="dropdown-item" href="/logout">Sign out</a>
+              </li>
+            </ul>
+          </div>
+        <?php else : ?>
+          <a href="/login">
+            <button type="button" class="btn btn-link fs-6 px-3 me-2">
+              Sign in
+            </button>
+          </a>
+          <a href="/register">
+            <button type="button" class="btn btn-primary fs-6 me-3">
+              Sign up
+            </button>
+          </a>
         <?php endif; ?>
-        <a
-          class="btn btn-dark px-3"
-          href="https://github.com/mdbootstrap/mdb-ui-kit"
-          role="button"
-          ><i class="fab fa-github"></i
-        ></a>
       </div>
     </div>
     <!-- Collapsible wrapper -->
-
   </div>
-  <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->

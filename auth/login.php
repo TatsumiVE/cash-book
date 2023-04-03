@@ -25,10 +25,12 @@ require("../database.php");
         $row = mysqli_fetch_assoc($result);
         if(!empty($row)){
           if(password_verify( $password,$row['password'])){
-               var_dump($_SESSION);
+              
             login([
               'id' => $row['user_id'],
               'email' => $email,
+              'name' => $row['username'],
+
             ]);
             header('location: /');
           
@@ -41,9 +43,10 @@ require("../database.php");
           }
       }
     }else{
-      $errors['body'] = "Enter valid email and password.";
+      $errors['body'] = "Input field is required";
     }
   }
+ 
 
  ?>
 
@@ -81,12 +84,12 @@ require("../database.php");
             <h3 class="mb-5">Sign in</h3>
 
             <div class="form-outline mb-4">
-              <input type="email" name="email" id="typeEmailX-2" class="form-control form-control-lg" />
+              <input type="email" name="email" id="typeEmailX-2" class="form-control form-control-lg" required />
               <label class="form-label" for="typeEmailX-2">Email</label>
             </div>
 
             <div class="form-outline mb-4">
-              <input type="password" name="password" id="typePasswordX-2" class="form-control form-control-lg" />
+              <input type="password" name="password" id="typePasswordX-2" class="form-control form-control-lg" required/>
               <label class="form-label" for="typePasswordX-2">Password</label>
             </div>
 

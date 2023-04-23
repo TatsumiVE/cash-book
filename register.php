@@ -64,7 +64,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
 
                 <div class="form-outline mb-4">
+<<<<<<< HEAD
                   <input type="password" name="confirm" id="confirm" class="form-control form-control-lg" required/>
+=======
+                  <input type="password" name="confirm" id="confirm" class="form-control form-control-lg" />
+>>>>>>> c1167bf693b2525e74c3d2ef70382011873b14a2
                   <label class="form-label" for="confirm">Repeat your password</label>
                 </div>
 
